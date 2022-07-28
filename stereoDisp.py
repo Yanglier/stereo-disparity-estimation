@@ -1,17 +1,14 @@
 import numpy as np
 import cv2 as cv
 
-img_l = cv.imread('left.png', 0)
-img_r = cv.imread('right.png', 0)
-
-def stereoPM():
+def stereoPM(img_l, img_r):
     # stereo = cv.StereoBM_create(
     #     numDisparities=48,
     #     blockSize=11)
     stereo = cv.StereoSGBM_create(
         minDisparity=0,
         numDisparities=96,
-        blockSize=5,
+        blockSize=11,
         uniquenessRatio=1,
         speckleRange=3,
         speckleWindowSize=3,
@@ -67,11 +64,9 @@ def stereoLBP(img_l, img_r, k=50, s=0.05, eta=1, iterations=20):
     return res
 
 if __name__ == '__main__':
-    img1 = cv.imread('left.png')
-    img2 = cv.imread('right.png')
+    img1 = cv.imread('000001_10.png')
+    img2 = cv.imread('000001_11.png')
     disp = stereoPM(img1, img2)
     # disp = stereoLBP(img1, img2)
     cv.imshow('Depth-Image', disp)
     cv.waitKey(0)
-
-
