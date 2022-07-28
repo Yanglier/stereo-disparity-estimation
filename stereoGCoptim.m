@@ -24,9 +24,10 @@ function result = stereoGC(img_l, img_r, D_MAX, adjacency_num)
         D = reshape(D, 1, N);
         unary(i,:) = D;
     end
-    unary = unary./ max(max(unary)) * 4;
     if adjacency_num == 8
         unary = unary./ max(max(unary)) * 8;
+    else
+        unary = unary./ max(max(unary)) * 4;
     end
     [~,segclass] = min(unary,[],1);
 

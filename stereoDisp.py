@@ -64,9 +64,9 @@ def stereoLBP(img_l, img_r, k=50, s=0.05, eta=1, iterations=20):
     return res
 
 if __name__ == '__main__':
-    img1 = cv.imread('000001_10.png')
-    img2 = cv.imread('000001_11.png')
-    disp = stereoPM(img1, img2)
-    # disp = stereoLBP(img1, img2)
-    cv.imshow('Depth-Image', disp)
+    img1 = cv.imread('left.png')
+    img2 = cv.imread('right.png')
+    # disp = stereoPM(img1, img2)
+    disp = stereoLBP(img1, img2)
+    cv.imshow('Disparity Image', disp)
     cv.waitKey(0)
